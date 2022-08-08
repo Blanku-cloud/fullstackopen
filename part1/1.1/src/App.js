@@ -1,49 +1,51 @@
 const App = () => {
-  const course = "Half Stack application development";
-  const part1 = "Fundementals of React";
-  const exersice1 = 10;
-  const part2 = "Using props to pass data";
-  const exersice2 = 7;
-  const part3 = "State of a component";
-  const exersice3 = 14;
+  const course = {
+    name: "Half Stack application development",
+    parts: [
+      {
+        name: "Fundamentals of React",
+        exercises: 10,
+      },
+      {
+        name: "Using props to pass data",
+        exercises: 7,
+      },
+      {
+        name: "State of a component",
+        exercises: 14,
+      },
+    ],
+  };
 
   return (
     <div>
       <Header title={course} />
-      <Content
-        type1={part1}
-        exersice1={exersice1}
-        type2={part2}
-        exersice2={exersice2}
-        type3={part3}
-        exersice3={exersice3}
-      />
-      <Total total={exersice1 + exersice2 + exersice3} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   );
 };
 
 const Header = (props) => {
+  const name = props.title.name;
   return (
     <>
-      <h1>{props.title}</h1>
+      <h1>{name}</h1>
     </>
   );
 };
 
 const Content = (props) => {
-  const type1 = props.type1;
-  const exersice1 = props.exersice1;
-  const type2 = props.type2;
-  const exersice2 = props.exersice2;
-  const type3 = props.type3;
-  const exersice3 = props.exersice3;
+  const assig = props.parts;
+  const assig1 = assig[0];
+  const assig2 = assig[1];
+  const assig3 = assig[2];
 
   return (
     <>
-      <Part part={type1} exersice={exersice1} />
-      <Part part={type2} exersice={exersice2} />
-      <Part part={type3} exersice={exersice3} />
+      <Part part={assig1.name} exersice={assig1.exercises} />
+      <Part part={assig2.name} exersice={assig2.exercises} />
+      <Part part={assig3.name} exersice={assig3.exercises} />
     </>
   );
 };
@@ -59,7 +61,13 @@ const Part = (props) => {
 };
 
 const Total = (props) => {
-  return <>Number of exersice {props.total}</>;
+  const assig = props.parts;
+  const assig1 = assig[0];
+  const assig2 = assig[1];
+  const assig3 = assig[2];
+  const total = assig1.exercises + assig2.exercises + assig3.exercises;
+
+  return <>Number of exersice {total}</>;
 };
 
 export default App;
