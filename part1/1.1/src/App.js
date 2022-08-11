@@ -36,10 +36,7 @@ const Header = (props) => {
 };
 
 const Content = (props) => {
-  const assig = props.parts;
-  const assig1 = assig[0];
-  const assig2 = assig[1];
-  const assig3 = assig[2];
+  const [assig1, assig2, assig3] = props.parts;
 
   return (
     <>
@@ -61,10 +58,8 @@ const Part = (props) => {
 };
 
 const Total = (props) => {
-  const assig = props.parts;
-  const assig1 = assig[0];
-  const assig2 = assig[1];
-  const assig3 = assig[2];
+  const [assig1, assig2, assig3] = props.parts;
+
   const total = assig1.exercises + assig2.exercises + assig3.exercises;
 
   return <>Number of exersice {total}</>;
